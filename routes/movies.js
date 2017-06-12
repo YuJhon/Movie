@@ -17,13 +17,12 @@ router.get('/list',function(req,res){
 router.post("/create",function(req,res){
     console.info("create method enter")
     var movie = new Movie(req.body);
-    movie.save();
-    /*movie.save(function(err){
+    movie.save(function(err){
         if(err){
             return res.send(err);
         }
         res.send({message:'add a movie'});
-    });*/
+    });
 });
 
 router.put('/update',function(req,res){
