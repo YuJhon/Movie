@@ -17,10 +17,11 @@ router.get('/list',function(req,res){
 router.post("/create",function(req,res){
     console.info("create method enter")
     var movie = new Movie(req.body);
-    movie.save(function(err){
+    movie.save(function(err,resp){
         if(err){
             return res.send(err);
         }
+        console.info("Create Record :\n "+resp);
         res.send({message:'add a movie'});
     });
 });
@@ -35,10 +36,11 @@ router.put('/update',function(req,res){
             movie[prop] = req.body[prop];
         }
 
-        movie.save(function(err){
+        movie.save(function(err,resp){
             if(err){
                 return res.send(err);
             }
+            console.info("Update Record :\n "+resp);
             res.json({message:'update a movie'});
         });
     });
